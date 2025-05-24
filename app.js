@@ -24,7 +24,7 @@ const MongoStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/bark-safe';
 // 'mongodb://localhost:27017/bark-safe'
 
-mongoose.connect('mongodb://localhost:27017/bark-safe');
+mongoose.connect(dbUrl);
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
@@ -42,7 +42,7 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'thisshouldbeabettersecret!'
+        secret: 'NinaIsAGolden'
     }
 });
 
@@ -53,7 +53,7 @@ store.on("error", function (e) {
 const sessionConfig = {
     store,
     name: 'doggo',
-    secret: 'thisshouldbeabettersecret',
+    secret: 'NinaIsAGolden',
     resave: false,
     saveUninitialized: true,
     cookies: {
