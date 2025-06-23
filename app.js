@@ -53,14 +53,14 @@ store.on("error", function (e) {
 const sessionConfig = {
     store,
     name: 'doggo',
-    secret: 'NinaIsAGolden',
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookies: {
         httpOnly: true,
         //secure: true,
-        exprires: Date.now() + 1000 * 60 * 60 * 24 * 7,
-        maxAge: 1000 + 60 + 60 + 24 + 7
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7
     }
 }
 app.use(session(sessionConfig));

@@ -1,2 +1,5 @@
 node_modules/
 .env
+bork-react
+*.key
+*.pem
