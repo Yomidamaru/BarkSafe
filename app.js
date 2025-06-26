@@ -22,6 +22,8 @@ const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 const MongoStore = require('connect-mongo');
 const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/bark-safe';
+const dotenv = require('dotenv').config()
+
 // 'mongodb://localhost:27017/bark-safe'
 
 mongoose.connect(dbUrl);
@@ -42,7 +44,7 @@ const store = MongoStore.create({
     mongoUrl: dbUrl,
     touchAfter: 24 * 60 * 60,
     crypto: {
-        secret: 'NinaIsAGolden'
+        secret: process.env.MONGOSTORE_SECRET
     }
 });
 
